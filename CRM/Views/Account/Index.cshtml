@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CRM.Models.Studentmodel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+
+<div class="container m-1">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-header border bg-primary">
+                <h2 class="text-center text-danger ">Student Recored</h2>
+            </div>
+            <a class="btn btn-outline-info " asp-controller="Account" asp-action="Create"> Create</a>
+
+
+            <form method="get" asp-action="index" class="float-right">
+                <p>
+                    <input type="search" placeholder="Search" aria-label="Search"  
+                           autocomplete="off" value="@ViewData["GetStudentDetail"]"
+                           name="search" style="width:200px" />
+                    <button class="btn btn-outline-info" type="submit"> Search </button> ||
+                    <a asp-action="index" class="btn btn-warning"> Get All Student</a>
+                </p>
+
+            </form>
+
+
+
+            <table class="table table-borderbed " id="DataTable">
+                <thead>
+                    <tr class=" table table-bordered  text-center bg-primary ">
+                        <td>User ID</td>
+                        <td> Name</td>
+                        <td> Email</td>
+                        <td> Mobile</td>
+                        <td> Gender</td>
+                        <td> StudentFee</td>
+                        <td>Description</td>
+                        <td>subjets</td>
+                        <td>Dob</td>
+                        <td>File</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+
+                @foreach (var stu in Model)
+                {
+                    var ImagePath = "Content/Laptop/" + stu.Path;
+                    <tr class="text-center table table-bordered">
+                        <td>@stu.Id</td>
+                        <td>@stu.Name</td>
+                        <td>@stu.Email</td>
+                        <td>@stu.Mobile</td>
+                        <td>@stu.Gender</td>
+                        <td>@stu.StudentFee</td>
+                        <td>@stu.Discription</td>
+                        <td>@stu.Subject</td>
+                        <td>@stu.Dob</td>
+                        <td>
+                            <img src="@ImagePath" height="100px;" width="100px;" />
+                        </td>
+
+
+
+
+
+                        <td>
+                            <a class="btn btn-primary m-1 " asp-controller="Account" asp-action="Edit" onclick="return confirm('Are you sure to Edit Recored ?')"
+                               asp-route-id="@stu.Id">Edit</a>
+                            <a class="btn btn-danger  " asp-controller="Account" asp-action="Delete" onclick="return confirm('Are you sure to Delete Recored ?')" asp-route-id="@stu.Id">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+

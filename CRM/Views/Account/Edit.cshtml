@@ -1,0 +1,86 @@
+﻿@model CRM.Models.Studentmodel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <div class="card ">
+                <div class="card-header  bg-warning">
+                    <h2 class="text-center">Edit Recored</h2>
+                    <div class="card-body bg-white">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit" class="p-1 pb-1 pr-1">
+                            <div class="row">
+                                <div class="form-group  col-6 ">
+                                    <label asp-for="Name">Name</label>
+                                    <input asp-for="Name" class="form-control " autocomplete="off" placeholder="Please Enter Name" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Email">Email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Please Enter Email " autocomplete="off" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Mobile">Mobile</label>
+                                    <input asp-for="Mobile" class="form-control" placeholder="Please Enter Mobile Number" autocomplete="off" />
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="StudentFee">StudentFee</label>
+                                    <input asp-for="StudentFee" class="form-control" placeholder="StudentFee" autocomplete="off" />
+                                    <span asp-validation-for="StudentFee" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Discription"></label>
+                                    <textarea rows="2" cols="10" asp-for="Discription" class="form-control" placeholder="Enter Description"></textarea>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Subject">Subject</label>
+                                    <select asp-for="Subject" asp-items="@ViewBag.Studentmodel" class="form-control">
+                                        <option value="">----select Text---</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Dob">dd/mm/yyyy</label>
+                                    <input asp-for="Dob" type="date" class="form-control" placeholder="dd/mm/yyyy" autocomplete="off" />
+                                </div>
+
+
+                                <div class="form-group col-6">
+                                    <label asp-for="ImagePath"></label>
+                                    <input type="file" class="form-control" asp-for="ImagePath" />
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Gender" class="form-check-label col-sm-3">Gender</label>
+                                    Male:-  @Html.RadioButton("Gender", "Male")
+                                    Female:-  @Html.RadioButton("Gender", "Female")
+                                </div>
+
+
+                                <div class="form-group col-6 m-2 float-right ">
+                                    <input type="submit" value="Submit" class="btn btn-primary  " />
+                                    <a asp-action="Index" class="btn btn-dark ">Back to List</a>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
